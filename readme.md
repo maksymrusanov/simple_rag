@@ -1,3 +1,4 @@
+
 # RAG with LangChain + Ollama (Local LLM)
 
 This project implements a **Retrieval-Augmented Generation (RAG)** system using **LangChain** and **Ollama** to run large language models locally without relying on any cloud API.
@@ -33,6 +34,8 @@ No external API keys or cloud services are required.
 ## ⚙️ Installation
 
 ```bash
+# Install correct version of Python
+
 # macOS
 brew install python@3.12
 
@@ -40,14 +43,27 @@ brew install python@3.12
 sudo apt update
 sudo apt install python3.12
 
+# Clone repo
 git clone https://github.com/maksymrusanov/simple_rag.git
-cd rag-langchain-ollama
+cd simple_rag
+
+# Activate virtual environment
 python3.12 -m venv venv
 source venv/bin/activate  # Linux / macOS
 venv\Scripts\activate     # Windows
 
+# Install dependencies
 pip install -r requirements.txt
-## ⚙️ Usage:
-Run the main script:
-python main.py
+```
 
+---
+
+## 🚀 Usage
+
+1. In the project root, create a folder named `data` and put all your files that will be used as the knowledge base there.
+
+2. Run the main script:
+
+```bash
+python main.py
+```
