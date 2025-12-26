@@ -1,5 +1,5 @@
 from langchain_classic.chains.retrieval_qa.base import RetrievalQA
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import PromptTemplate
 from langchain_ollama import ChatOllama, OllamaEmbeddings
@@ -7,16 +7,16 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 CHROMA_PATH = "chroma"
 OLLAMA_MODEL = "llama3:8b"
-
-# 1️⃣ Load PDF
-pages = PyPDFLoader("data/data.pdf").load()
-
+DATA_PATH = "data/"
+# 1️⃣ Load PDF`s
+documents = PyPDFDirectoryLoader(DATA_PATH).load()
 # 2️⃣ Split
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=500,
     chunk_overlap=100,
 )
-chunks = text_splitter.split_documents(pages)
+
+chunks = text_splitter.split_documents(documents)
 
 # 3️⃣ Embeddings + DB
 embeddings = OllamaEmbeddings(model="nomic-embed-text")
